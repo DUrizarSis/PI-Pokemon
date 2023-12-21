@@ -1,0 +1,66 @@
+.landingPageBg {
+    background-image: url('../../assets/bg2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.by {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    font-size: 1.5em;
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 4em;
+    color: white;
+    text-shadow: 3px 5px 4px rgba(0, 0, 0, 0.7);
+    letter-spacing: 0.05em;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .5em;
+    font-size: 2em;
+    padding: .5em 1em;
+    border: none;
+    border-radius: 1em;
+    background-color: rgba(12, 66, 144, 0.7);
+    font-family: 'Architects Daughter', cursive;
+    font-family: 'Luckiest Guy', cursive;
+    color: white;
+    text-shadow: 3px 5px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.5);
+    transition: all .2s;
+}
+
+.btn:hover {
+    background-color: rgba(226, 63, 85, 0.7);
+}
+
+.arrow {
+    max-height: 1em;
+    transition: all .2s;
+}
+.arrow:hover {
+    max-height: 1.2em;
+}
+
+img {
+    max-width: 25em;
+    filter: drop-shadow(5px 3px 1.5px rgba(0, 0, 0, .5));
+}

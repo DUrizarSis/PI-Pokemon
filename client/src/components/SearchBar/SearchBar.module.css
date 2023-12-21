@@ -1,0 +1,26 @@
+.searchBar {
+    display: flex;
+    gap: .5em;
+}
+
+.inputSearch {
+    border-radius: 2em;
+    font-family: 'Architects Daughter', cursive;
+    font-family: 'Luckiest Guy', cursive;
+    background-color: transparent;
+}
+
+.btn {
+    max-width: 2.5em;
+    max-height: 2.5em;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2em;
+    background-color: #083651;
+}
+
+.btnIcon {
+    max-width: 1em;
+}
