@@ -11,7 +11,7 @@ const getPokemonId = async(req, res)=> {
     const idToString = idPokemon.toString()
 
     try {
-        if(idToString.length === 32) { //Validacion de longitud
+        if(idToString.length >= 28) { //Validacion de longitud
             const pokemonDbData = await Pokemons.findOne({ //Busqueda en DB
                 where: {
                     id: idPokemon
