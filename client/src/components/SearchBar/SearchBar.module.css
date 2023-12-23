@@ -8,17 +8,37 @@
     font-family: 'Architects Daughter', cursive;
     font-family: 'Luckiest Guy', cursive;
     background-color: transparent;
+    border-style: none;
+    color: #083651;
+    border: solid 3px #083651;
+    padding-left: 1.5em;
+
+}
+
+.inputSearch::placeholder {
+    color: #084264;
+}
+
+.inputSearch:focus {
+    outline: none;
 }
 
 .btn {
     max-width: 2.5em;
     max-height: 2.5em;
-    padding: 1em;
+    padding: 1.4em;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 2em;
     background-color: #083651;
+    border: none;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.btn:hover {
+    background-color: #084264;
+    box-shadow: 2.5px 2.5px 2.5px rgba(0, 0, 0, 0.5);
 }
 
 .btnIcon {

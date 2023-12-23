@@ -1,6 +1,5 @@
-
-
 const validation = (formData) => {
+
   const errors = {};
 
   // Validar campos obligatorios
@@ -15,6 +14,12 @@ const validation = (formData) => {
     errors.name = 'Name should be at least 3 characters long';
   }
 
+  // Validar URL de imagen
+  const urlPattern = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i;
+  if (!urlPattern.test(formData.image)) {
+      errors.image = 'Enter a valid image URL';
+  } 
+
   // Validar campos numéricos
   const numericFields = ['hp', 'attack', 'defense', 'speed', 'height', 'weight'];
   numericFields.forEach(field => {
@@ -22,6 +27,11 @@ const validation = (formData) => {
       errors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} should be a valid number greater than zero`;
     }
   });
+
+  // Validar que exactamente dos tipos estén seleccionados
+  if (formData.types.length !== 2) {
+    errors.types = 'Select exactly two types';
+  }
 
   return errors;
 };

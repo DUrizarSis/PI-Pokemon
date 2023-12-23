@@ -5,6 +5,10 @@ function About() {
     return (
         <div>
             <NavBar/>
+
+            <div>
+                <h3>I'm Diego Urizar</h3>
+            </div>
         </div>
     )
 }

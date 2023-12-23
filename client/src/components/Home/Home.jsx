@@ -24,8 +24,13 @@ function Home() {
     return (
         <div className={style.homeBg}>
             <NavBar/>
-            <Filters/>
-            <Cards/>
+
+            <div className={style.container}>
+                <div> <Filters/> </div>
+                <div> <Cards/> </div>
+            </div>
+                
+            
         </div>
     )
 }

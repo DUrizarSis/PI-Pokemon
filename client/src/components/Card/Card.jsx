@@ -8,9 +8,9 @@ function Card({pokemon}) {
     const pokemonTypes = types || Types;
 
     return (
-        <div>
-            <img src={image} alt="img-pokemon"/>
-            <h3>{name}</h3>
+        <div className={style.container}>
+            <img src={image} alt="img-pokemon" className={style.imageCard}/>
+            <h3 className={style.nameCard}>{name}</h3>
             <h3>{hp}</h3>
             <ol>
                 {/* Verificar que el array no está vacío antes de mapearlo */}
@@ -21,7 +21,7 @@ function Card({pokemon}) {
                 {pokemonTypes.length === 0 && <li>No hay tipos disponibles</li>}
             </ol>
             <Link to={`/detail/${id}`}>
-                <button>Ver mas</button>
+                <button className={style.btn}>Ver mas</button>
             </Link>
         </div>
     )
