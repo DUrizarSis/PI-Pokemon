@@ -101,30 +101,66 @@ function Form() {
 
     return (
 
-      <div>
+      <div className={style.mainContainer}>
         <div>
           <h3>¡Create your <span>pokemon!</span></h3>
           <p>Find images for your pokemons <a href="https://custom-doodle.com/collection/pokemon/" target='_blanck'>HERE</a></p>
         </div>
         <div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className={style.formDisplay}>
 
-            <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Name"/>
-              {renderError('name')}
-            <input type="number" name="hp" value={formData.hp} onChange={handleInputChange} placeholder="HP"/>
-              {renderError('hp')}
-            <input type="number" name="defense" value={formData.defense} onChange={handleInputChange} placeholder="Defense"/>
-              {renderError('defense')}
-            <input type="number" name="attack" value={formData.attack} onChange={handleInputChange} placeholder="Attack"/>
-              {renderError('attack')}
-            <input type="number" name="speed" value={formData.speed} onChange={handleInputChange} placeholder="Speed"/>
-              {renderError('speed')}
-            <input type="number" name="height" value={formData.height} onChange={handleInputChange} placeholder="Height"/>
-              {renderError('height')}
-            <input type="number" name="weight" value={formData.weight} onChange={handleInputChange} placeholder="Weight"/>
-              {renderError('weight')}
-            <input type="url" name="image" value={formData.image} onChange={handleInputChange} placeholder="Image"/>
-              {renderError('image')}
+            <div className={style.formContainer}>
+              <div className={style.inputs}>
+                <input className={style.input} type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Name"/>
+                  {renderError('name')}
+                <input className={style.input} type="number" name="hp" value={formData.hp} onChange={handleInputChange} placeholder="HP"/>
+                  {renderError('hp')}
+                <input className={style.input} type="number" name="defense" value={formData.defense} onChange={handleInputChange} placeholder="Defense"/>
+                  {renderError('defense')}
+                <input className={style.input} type="number" name="attack" value={formData.attack} onChange={handleInputChange} placeholder="Attack"/>
+                  {renderError('attack')}
+                <input className={style.input} type="number" name="speed" value={formData.speed} onChange={handleInputChange} placeholder="Speed"/>
+                  {renderError('speed')}
+                <input className={style.input} type="number" name="height" value={formData.height} onChange={handleInputChange} placeholder="Height"/>
+                  {renderError('height')}
+                <input className={style.input} type="number" name="weight" value={formData.weight} onChange={handleInputChange} placeholder="Weight"/>
+                  {renderError('weight')}
+                <input className={style.input} type="url" name="image" value={formData.image} onChange={handleInputChange} placeholder="Image"/>
+                  {renderError('image')}
+              </div>
+
+              <div>
+                <fieldset>
+                    <legend>Choose your Pokemon's types*</legend>
+                    {types.map(type => {
+                        const isChecked = formData.types.some(selectedType => selectedType.name === type.name);
+                        const disabled = formData.types.length >= 2 && !isChecked;
+
+                        return (
+                            <div key={type.id}>
+                                <input
+                                    type="checkbox"
+                                    id={type.id}
+                                    name="types"
+                                    value={type.name}
+                                    checked={isChecked}
+                                    onChange={handleCheckbox}
+                                    disabled={disabled} // Deshabilita si ya hay 2 tipos seleccionados y este no está seleccionado
+                                />
+                                <label htmlFor={type.id}>
+                                    {type.name[0].toUpperCase() + type.name.slice(1)}
+                                </label>
+                            </div>
+                        );
+                    })}
+                </fieldset>
+                      {renderError('types')}
+              </div>
+            </div>
+
+            <button className={style.btnSubmit} type="submit">Submit</button>
+
+
             {/* <fieldset>
                   <legend>Choose your Pokemon's types*</legend>
                   {types.map(type => { 
@@ -134,35 +170,7 @@ function Form() {
                       </div>
                   })}
               </fieldset> */}
-
-            <fieldset>
-                <legend>Choose your Pokemon's types*</legend>
-                {types.map(type => {
-                    const isChecked = formData.types.some(selectedType => selectedType.name === type.name);
-                    const disabled = formData.types.length >= 2 && !isChecked;
-
-                    return (
-                        <div key={type.id}>
-                            <input
-                                type="checkbox"
-                                id={type.id}
-                                name="types"
-                                value={type.name}
-                                checked={isChecked}
-                                onChange={handleCheckbox}
-                                disabled={disabled} // Deshabilita si ya hay 2 tipos seleccionados y este no está seleccionado
-                            />
-                            <label htmlFor={type.id}>
-                                {type.name[0].toUpperCase() + type.name.slice(1)}
-                            </label>
-                        </div>
-                    );
-                })}
-            </fieldset>
-                  {renderError('types')}
-
-            <button type="submit">Submit</button>
-            </form>
+          </form>
         </div>
       </div>
 

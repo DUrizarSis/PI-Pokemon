@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { orderCards, filterByAttack, filterByType, filterByOrigin, getAll } from '../../redux/actions';
 import style from './Filters.module.css'
+import update from '../../assets/reload.svg'
 
 function Filters() {
 
@@ -32,12 +33,12 @@ function Filters() {
 
   return (
     <div className={style.filters}>
-      <h2>Filters</h2>
+      <h2 className={style.headFilters}>Filters</h2>
 
       <div>
-        <h3>Type</h3>
-        <select onChange={handleTypeFilter}>
-          <option value="" disabled >All Types</option>
+        <h3 className={`${style.headFilter} ${style.filt1}`}>Type</h3>
+        <select className={style.filter1} onChange={handleTypeFilter}>
+          <option value="" disabled selected >All Types</option>
           {types.map((type) => (
             <option key={type.id} value={type.name}>
               {type.name}
@@ -47,34 +48,34 @@ function Filters() {
       </div>
 
       <div>
-        <h3>Origin</h3>
-        <select onChange={(e) => handleOriginFilter(e.target.value)}>
-            <option value="" disabled>Origin</option>
+        <h3 className={`${style.headFilter} ${style.filt1}`}>Origin</h3>
+        <select className={style.filter1} onChange={(e) => handleOriginFilter(e.target.value)}>
+            <option value="" disabled selected>Origin</option>
             <option value="API">API</option>
             <option value="DB">LOCAL</option>
         </select>
       </div>
 
       <div>
-        <h3>Order</h3>
-        <select onChange={(e) => handleOrderFilter(e.target.value)}>
-            <option value="" disabled>Order</option>
+        <h3 className={`${style.headFilter} ${style.filt2}`}>Order</h3>
+        <select className={style.filter2} onChange={(e) => handleOrderFilter(e.target.value)}>
+            <option value="" disabled selected>Order</option>
             <option value="A">Ascendente</option>
             <option value="Z">Descendente</option>
         </select>
       </div>
 
       <div>
-        <h3>Attack</h3>
-        <select onChange={(e) => handleAttackFilter(e.target.value)}>
-            <option value="" disabled>Attack</option>
+        <h3 className={`${style.headFilter} ${style.filt2}`}>Attack</h3>
+        <select className={style.filter2} onChange={(e) => handleAttackFilter(e.target.value)}>
+            <option value="" disabled selected>Attack</option>
             <option value="A">Ascendente</option>
             <option value="Z">Descendente</option>
         </select>
       </div>
 
-      <div>
-        <button onClick={resetPokes}>reload</button>
+      <div className={style.btnCont}>
+        <button onClick={resetPokes} className={style.btn}> <img src={update} alt="update-btn" className={style.updateImg} /> reload</button>
       </div>
     </div>
   );

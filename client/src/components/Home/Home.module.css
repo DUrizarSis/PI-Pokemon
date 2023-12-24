@@ -7,3 +7,15 @@
     width: 100%;
     min-height: 100vh;
 }
+
+.container {
+    display: flex;
+    margin: 1em 3em 0em 3em;
+    gap: 3em;
+}
+
+.line {
+    height: 30em;
+    width: .3em;
+    background-color: white;
+}
