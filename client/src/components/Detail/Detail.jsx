@@ -27,32 +27,44 @@ function Detail() {
 
 
     return (
-        <div>
+        <div className={style.detailBg}>
             <NavBar/>
 
-            <div>
-                <h2>{id}</h2>
-                <h2>{name}</h2>
-                <img src={image} alt="image-pokemon"/>
-                <h3>{hp}</h3>
-                <h3>{attack}</h3>
-                <h3>{defense}</h3>
-                <h3>{speed}</h3>
-                <h3>{height}</h3>
-                <h3>{weight}</h3>
+            <div className={style.detailContainer}>
+                <div>
+                    <img src={image} alt="image-pokemon" className={style.imageDetail}/>
+                </div>
 
-                {pokemonTypes && (
-                    <ol>
-                        {/* Verificar que el array no está vacío antes de mapearlo */}
-                        {pokemonTypes.length > 0 ? (
-                        pokemonTypes.map((type) => (
-                            <li key={type.id}>{type.name}</li>
-                        ))
-                        ) : (
-                            <li>No hay tipos disponibles</li>
-                        )}
-                    </ol>
-                )}
+                <div className={style.dataDetail}>
+                    <div className={style.headParams}>
+                        <h2 className={style.idDetail}><span className={style.labelHead}>id:</span> {id}</h2>
+                        <h2 className={style.nameDetail}><span className={style.labelHead}>name:</span> {name}</h2>
+                    </div>
+                    <div className={style.bodyParams}>
+                        <div className={style.paramsPoke}>
+                            <h3 className={style.pokeParam}><span className={style.labelParam}>hp:</span> {hp}</h3>
+                            <h3 className={style.pokeParam}><span className={style.labelParam}>attack:</span> {attack}</h3>
+                            <h3 className={style.pokeParam}><span className={style.labelParam}>defense:</span> {defense}</h3>
+                            <h3 className={style.pokeParam}><span className={style.labelParam}>speed:</span> {speed}</h3>
+                            <h3 className={style.pokeParam}><span className={style.labelParam}>height:</span> {height}</h3>
+                            <h3 className={style.pokeParam}><span className={style.labelParam}>weight:</span> {weight}</h3>
+                        </div>
+                        <div className={style.typesParams}>
+                            {pokemonTypes && (
+                                <ol className={style.listTypes}>
+                                    {/* Verify that the array is not empty before mapping it */}
+                                    {pokemonTypes.length > 0 ? (
+                                    pokemonTypes.map((type, index) => (
+                                        <li key={index}>{type.name}</li>
+                                    ))
+                                    ) : (
+                                        <li>No hay tipos disponibles</li>
+                                    )}
+                                </ol>
+                            )}
+                        </div>
+                    </div>
+                </div>
             </div>
 
             

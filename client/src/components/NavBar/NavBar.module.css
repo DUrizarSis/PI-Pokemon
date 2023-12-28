@@ -53,3 +53,27 @@
     width: 1em;
     margin-left: .5em;
 }
+
+
+/* Mobile version */
+
+@media (max-width: 480px) {
+    .container {
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .btnNav {
+        border-radius: 0;
+        margin: 0;
+        padding: .4em 1.5em;
+    }
+
+    .btn1 {
+        border-radius: 2em 0 0 2em;
+    }
+
+    .btn3 {
+        border-radius: 0 2em 2em 0;
+    }
+}

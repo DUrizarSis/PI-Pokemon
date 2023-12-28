@@ -29,28 +29,31 @@ const Reducer = (state = initialState, { type, payload })=> {
             }
 
         case ORDER:
-            const orderById = payload === 'A' 
-            ? [...state.allPokemons].sort((a, b) => a.id - b.id)
-            : [...state.allPokemons].sort((a, b) => b.id - a.id);
+            const orderedPokemons = [...state.allPokemons].sort((a, b) => {
+                if (payload === 'A') {
+                    return a.name.localeCompare(b.name); 
+                } else {
+                    return b.name.localeCompare(a.name); 
+                }
+            });
 
             return {
                 ...state,
-                pokemons: orderById
+                pokemons: orderedPokemons
             }
 
         case ATTACK_FILTER:
-            if(payload === 'A') {
-                return {
-                    ...state,
-                    pokemons: state.pokemons.sort((a, b) => a.attack - b.attack)
+            const orderedByAttack = [...state.allPokemons].sort((a, b) => {
+                if (payload === 'A') {
+                    return a.attack - b.attack; 
+                } else {
+                    return b.attack - a.attack;
                 }
-            } else if(payload === 'Z') {
-                return {
+            });
+
+            return {
                 ...state,
-                pokemons: state.pokemons.sort((a, b) => b.attack.localeCompare(a.attack))}
-            } else return {
-                ...state,
-                pokemons: state.pokemons.sort((a, b) => a.id - b.id)
+                pokemons: orderedByAttack
             }
 
         case TYPE_FILTER:
@@ -60,7 +63,7 @@ const Reducer = (state = initialState, { type, payload })=> {
                         type => type.name.toLowerCase() === payload.toLowerCase()
                     );
                     if (foundType) {
-                        return true; // Si se encuentra el tipo en "types"
+                        return true; // If the type is found in "types"
                     }
                 }
                 if (poke.Types && Array.isArray(poke.Types)) {
@@ -68,10 +71,10 @@ const Reducer = (state = initialState, { type, payload })=> {
                         type => type.name.toLowerCase() === payload.toLowerCase()
                     );
                     if (foundType) {
-                        return true; // Si se encuentra el tipo en "Types"
+                        return true; // If the type is found in "Types"
                     }
                 }
-                return false; // Si no se encuentra en ninguno
+                return false; // If the type is not found 
             })
             return {
                 ...state,

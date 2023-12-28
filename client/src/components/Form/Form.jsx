@@ -39,7 +39,7 @@ function Form() {
         setFormData({ ...formData, [name]: value.toLowerCase() });
         //setErrors(validation({ ...formData, [name]: value }));
 
-        // Validar en cada cambio
+        // Validation in real time
         const validationErrors = { ...validation({ ...formData, [name]: value }), ...checkUniqueName(value) };
         setErrors(validationErrors);
     };
@@ -49,25 +49,12 @@ function Form() {
       return nameExists ? { name: 'This Pokémon name already exists' } : "";
     };
 
-    // const handleCheckbox = (event) => {
-    //     const { value, checked } = event.target;
-    //     let updatedTypes = [...formData.types];
-
-    //     if (checked) {
-    //         updatedTypes.push({ name: value }); // Agrega el tipo como un objeto
-    //     } else {
-    //         updatedTypes = updatedTypes.filter((type) => type.name !== value);
-    //     }
-    //     setFormData({ ...formData, types: updatedTypes });
-    //     setErrors(validation({ ...formData, types: updatedTypes}));
-    // };
-
     const handleCheckbox = (event) => {
       const { value, checked } = event.target;
       let updatedTypes = [...formData.types];
   
       if (checked) {
-          if (updatedTypes.length < 2) { // Permite seleccionar solo si hay menos de 2 tipos seleccionados
+          if (updatedTypes.length < 2) { // Allows selection only if there are less than 2 types selected
               updatedTypes.push({ name: value });
           }
       } else {
@@ -87,57 +74,64 @@ function Form() {
 
         if (formIsValid) {
             try {
-                const response = await axios.post('http://localhost:3001/pokemons', formData); // Reemplaza 'URL_DEL_ENDPOINT' con tu URL real
+                const response = await axios.post('http://localhost:3001/pokemons', formData); 
                 dispatch(addPokemon(response.data));
-                navigate('/home'); // Redirige a la página de éxito después de enviar los datos
+                navigate('/home'); // Redirige a home después de enviar los datos
                 alert('Pokemon created succesfully');
               } catch (error) {
                 alert(error.response.data.error);
             }
         } else {
-            console.log('Formulario inválido');
+            alert('Formulario inválido');
         }
     };
 
     return (
 
       <div className={style.mainContainer}>
-        <div>
-          <h3>¡Create your <span>pokemon!</span></h3>
-          <p>Find images for your pokemons <a href="https://custom-doodle.com/collection/pokemon/" target='_blanck'>HERE</a></p>
+        <div className={style.textPage}>
+          <h3 className={style.headCreate}>¡Create your <span className={style.pokeTitle}>pokemon!</span></h3>
+          <p className={style.textCreate}>Find images for your pokemons <br /> <a href="https://custom-doodle.com/collection/pokemon/" target='_blanck' className={style.linkPokeImg}>HERE</a></p>
         </div>
-        <div>
+        <div className={style.formContent}>
           <form onSubmit={handleSubmit} className={style.formDisplay}>
 
             <div className={style.formContainer}>
               <div className={style.inputs}>
                 <input className={style.input} type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Name"/>
-                  {renderError('name')}
+                  <div className={style.errorCont}>{renderError('name')}</div>
+                
                 <input className={style.input} type="number" name="hp" value={formData.hp} onChange={handleInputChange} placeholder="HP"/>
-                  {renderError('hp')}
+                  <div className={style.errorCont}>{renderError('hp')}</div>
+                
                 <input className={style.input} type="number" name="defense" value={formData.defense} onChange={handleInputChange} placeholder="Defense"/>
-                  {renderError('defense')}
+                  <div className={style.errorCont}>{renderError('defense')}</div>
+                
                 <input className={style.input} type="number" name="attack" value={formData.attack} onChange={handleInputChange} placeholder="Attack"/>
-                  {renderError('attack')}
+                  <div className={style.errorCont}>{renderError('attack')}</div>
+                
                 <input className={style.input} type="number" name="speed" value={formData.speed} onChange={handleInputChange} placeholder="Speed"/>
-                  {renderError('speed')}
+                  <div className={style.errorCont}>{renderError('speed')}</div>
+                
                 <input className={style.input} type="number" name="height" value={formData.height} onChange={handleInputChange} placeholder="Height"/>
-                  {renderError('height')}
+                  <div className={style.errorCont}>{renderError('height')}</div>
+                
                 <input className={style.input} type="number" name="weight" value={formData.weight} onChange={handleInputChange} placeholder="Weight"/>
-                  {renderError('weight')}
+                  <div className={style.errorCont}>{renderError('weight')}</div>
+                
                 <input className={style.input} type="url" name="image" value={formData.image} onChange={handleInputChange} placeholder="Image"/>
-                  {renderError('image')}
+                  <div className={style.errorCont}>{renderError('image')}</div>
               </div>
 
               <div>
                 <fieldset>
-                    <legend>Choose your Pokemon's types*</legend>
+                    <legend className={style.headTypes}>Choose your Pokemon's types*</legend>
                     {types.map(type => {
                         const isChecked = formData.types.some(selectedType => selectedType.name === type.name);
                         const disabled = formData.types.length >= 2 && !isChecked;
 
                         return (
-                            <div key={type.id}>
+                            <div key={type.id} className={style.check}>
                                 <input
                                     type="checkbox"
                                     id={type.id}
@@ -145,31 +139,20 @@ function Form() {
                                     value={type.name}
                                     checked={isChecked}
                                     onChange={handleCheckbox}
-                                    disabled={disabled} // Deshabilita si ya hay 2 tipos seleccionados y este no está seleccionado
+                                    disabled={disabled} 
                                 />
-                                <label htmlFor={type.id}>
+                                <label htmlFor={type.id} className={style.nameType}>
                                     {type.name[0].toUpperCase() + type.name.slice(1)}
                                 </label>
                             </div>
                         );
                     })}
                 </fieldset>
-                      {renderError('types')}
+                      <div className={style.errorCont}>{renderError('types')}</div>
               </div>
             </div>
 
             <button className={style.btnSubmit} type="submit">Submit</button>
-
-
-            {/* <fieldset>
-                  <legend>Choose your Pokemon's types*</legend>
-                  {types.map(type => { 
-                      return <div key={type.id}>
-                          <input type="checkbox" id={type.id} name="types" value={type.name} onChange={handleCheckbox}/>
-                          <label htmlFor={type.id}>{type.name[0].toUpperCase() + type.name.slice(1)}</label> 
-                      </div>
-                  })}
-              </fieldset> */}
           </form>
         </div>
       </div>

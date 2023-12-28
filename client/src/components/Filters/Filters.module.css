@@ -25,7 +25,7 @@
     color: white;
     font-family: 'Architects Daughter', cursive;
     font-family: 'Luckiest Guy', cursive;
-    border-radius: 2em;
+    border-radius: 0 2em 2em 0;
     width: 10em;
 }
 
@@ -40,7 +40,7 @@
     color: white;
     font-family: 'Architects Daughter', cursive;
     font-family: 'Luckiest Guy', cursive;
-    border-radius: 2em;
+    border-radius: 0 2em 2em 0;
     width: 10em;
 }
 
@@ -74,4 +74,41 @@
     margin: 0;
     margin-right: .5em;
     filter: drop-shadow(3px 2px 1.5px rgba(0, 0, 0, .5));
+}
+
+
+/* Mobile Version */
+
+@media (max-width: 480px) {
+    .headFilters {
+        text-align: center;
+    }
+
+    .filtersOne {
+        display: flex;
+        gap: .5em;
+    }
+
+    .filtersTwo {
+        display: flex;
+        gap: .5em;
+    }
+
+    .filter1 {
+        border-radius: 0;
+        width: 9.6em;
+    }
+
+    .filter2 {
+        border-radius: 0;
+        width: 9.6em;
+    }
+
+    .btnCont {
+        margin-top: 1em;
+    }
+
+    .btn {
+        width: 100%;
+    }
 }

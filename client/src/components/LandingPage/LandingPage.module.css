@@ -64,3 +64,17 @@ img {
     max-width: 25em;
     filter: drop-shadow(5px 3px 1.5px rgba(0, 0, 0, .5));
 }
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 3em;
+    }
+
+    .btn {
+        font-size: 1.5em;
+    }
+
+    img {
+        max-width: 20em;
+    }
+}

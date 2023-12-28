@@ -24,7 +24,7 @@ const validation = (formData) => {
   const numericFields = ['hp', 'attack', 'defense', 'speed', 'height', 'weight'];
   numericFields.forEach(field => {
     if (isNaN(formData[field]) || formData[field] <= 0) {
-      errors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} should be a valid number greater than zero`;
+      errors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} should be greater than zero`;
     }
   });
 

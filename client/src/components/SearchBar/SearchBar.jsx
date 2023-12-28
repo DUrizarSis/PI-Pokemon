@@ -15,7 +15,7 @@ function SearchBar() {
     }
     
     const searchPoke = async () => {
-        // Si no introduce ningún nombre
+        // If the user doesn't enter any name
         if(!name) return alert('Please write a valid Pokemon name');
 
         try {

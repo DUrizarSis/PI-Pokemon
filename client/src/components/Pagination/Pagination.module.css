@@ -3,20 +3,29 @@
     margin-top: 2em;
     border: none;
     border-radius: 2em;
-    width: 2em;
-    height: 2em;
+    width: 2.2em;
+    height: 2.2em;
     font-family: 'Architects Daughter', cursive;
     font-family: 'Luckiest Guy', cursive;
-    color: white;
-    background-color: transparent;
-    border: 3px solid white;
+    color: #0C4290;
+    background-color: white;
+    border: 3px solid #0C4290;
 }
 
 .pageItem:last-child {
     margin-right: 0;
 }
 
-.pageItem:hover {
-    background-color: white;
-    color: #0C4290;
+.activePageItem {
+    margin-right: 1em;
+    margin-top: 2em;
+    border: none;
+    border-radius: 2em;
+    width: 2em;
+    height: 2em;
+    font-family: 'Architects Daughter', cursive;
+    font-family: 'Luckiest Guy', cursive;
+    border: 3px solid white;
+    background-color: #0C4290;
+    color: white;
 }

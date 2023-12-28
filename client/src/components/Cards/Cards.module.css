@@ -11,3 +11,10 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 480px) {
+    .container {
+        text-align: center;
+        margin-bottom: 5em;
+    }
+}

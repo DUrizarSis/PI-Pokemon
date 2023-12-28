@@ -44,3 +44,9 @@
 .btnIcon {
     max-width: 1em;
 }
+
+@media (max-width: 480px) {
+    .inputSearch {
+        width: 18em;
+    }
+}
