@@ -27,7 +27,7 @@ function Home() {
 
             <div className={style.container}>
                 <div> <Filters/> </div>
-                <div> <Cards/> </div>
+                <div className={style.cardsPage}> <Cards/> </div>
             </div>
                 
             

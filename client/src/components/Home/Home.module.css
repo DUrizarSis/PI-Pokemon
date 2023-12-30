@@ -20,6 +20,12 @@
     background-color: white;
 }
 
+.cardsPage {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
 @media (max-width: 480px) {
     .container {
         flex-direction: column;

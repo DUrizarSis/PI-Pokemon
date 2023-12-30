@@ -184,3 +184,16 @@
     background-color: transparent;
     color: white;
 }
+
+.closeBtn {
+    margin: 0;
+    background-color: #c93e50;
+    color: white;
+    font-family: 'Architects Daughter', cursive;
+    font-family: 'Luckiest Guy', cursive;
+    padding: 0 1em;
+}
+
+.closeBtn:hover {
+    background-color: #fc5d72;
+}

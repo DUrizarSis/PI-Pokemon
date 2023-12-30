@@ -7,7 +7,6 @@ function Card({pokemon}) {
     const { id, name, image, hp, types, Types} = pokemon;
     const pokemonTypes = types || Types;
 
-
     return (
         <div className={style.container}>
             <img src={image} alt="img-pokemon" className={style.imageCard}/>
