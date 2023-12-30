@@ -1,5 +1,7 @@
 import style from './Card.module.css';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removePokemon } from '../../redux/actions';
 
 
 function Card({pokemon}) {
@@ -7,8 +9,15 @@ function Card({pokemon}) {
     const { id, name, image, hp, types, Types} = pokemon;
     const pokemonTypes = types || Types;
 
+    const dispatch = useDispatch();
+
+    const deletePokemon = () => {
+        dispatch(removePokemon(id))
+    }
+
     return (
         <div className={style.container}>
+            {id.length >= 30 && <button className={style.btnDelete} onClick={deletePokemon}>X</button>}
             <img src={image} alt="img-pokemon" className={style.imageCard}/>
             <h3 className={style.nameCard}>{name}</h3>
             <h3 className={style.hpCard}>{hp}</h3>

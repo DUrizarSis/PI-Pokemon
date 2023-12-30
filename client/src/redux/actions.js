@@ -1,4 +1,4 @@
-import { GET_ALL, GET_TYPES, TYPE_FILTER, ATTACK_FILTER, SEARCH_POKE, ADD_POKEMON, ORIGIN_FILTER, ORDER } from "./action-types";
+import { GET_ALL, GET_TYPES, TYPE_FILTER, ATTACK_FILTER, SEARCH_POKE, ADD_POKEMON, ORIGIN_FILTER, ORDER, DELETE_POKE } from "./action-types";
 import axios from 'axios';
 
 const URL = 'http://localhost:3001/';
@@ -81,4 +81,22 @@ export const searchPokemons = (name)=> {
             throw error;   
         }
     }
+}
+
+//Extra
+export const removePokemon = (id)=> {
+    return async(dispatch) => {
+        try {
+            await axios.delete(`${URL}pokemons/${id}`);
+    
+            return dispatch ({
+                type: DELETE_POKE,
+                payload: id
+            })
+        } catch (error) {
+            alert('Server Error');
+            throw error;
+        }
+    }
+
 }

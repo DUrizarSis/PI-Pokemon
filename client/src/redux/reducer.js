@@ -1,9 +1,10 @@
-import { GET_ALL, GET_TYPES, TYPE_FILTER, SEARCH_POKE, ADD_POKEMON, ORIGIN_FILTER, ORDER, ATTACK_FILTER } from "./action-types";
+import { GET_ALL, GET_TYPES, TYPE_FILTER, SEARCH_POKE, ADD_POKEMON, ORIGIN_FILTER, ORDER, ATTACK_FILTER, DELETE_POKE } from "./action-types";
 
 const initialState = {
     types: [],
     pokemons: [],
     allPokemons: [],
+    filteredPokemons: [],
 }
 
 const Reducer = (state = initialState, { type, payload })=> {
@@ -12,7 +13,8 @@ const Reducer = (state = initialState, { type, payload })=> {
             return {
                 ...state,
                 pokemons: payload,
-                allPokemons: payload
+                allPokemons: payload,
+                filteredPokemons: payload,
             }
             
         case GET_TYPES:
@@ -25,11 +27,12 @@ const Reducer = (state = initialState, { type, payload })=> {
             return {
                 ...state,
                 pokemons: [...state.pokemons, payload],
-                allPokemons: [...state.allPokemons, payload]
+                allPokemons: [...state.allPokemons, payload],
+                filteredPokemons: [...state.filteredPokemons, payload],
             }
 
         case ORDER:
-            const orderedPokemons = [...state.allPokemons].sort((a, b) => {
+            const orderedPokemons = [...state.filteredPokemons].sort((a, b) => {
                 if (payload === 'A') {
                     return a.name.localeCompare(b.name); 
                 } else {
@@ -39,11 +42,11 @@ const Reducer = (state = initialState, { type, payload })=> {
 
             return {
                 ...state,
-                pokemons: orderedPokemons
+                filteredPokemons: orderedPokemons
             }
 
         case ATTACK_FILTER:
-            const orderedByAttack = [...state.allPokemons].sort((a, b) => {
+            const orderedByAttack = [...state.filteredPokemons].sort((a, b) => {
                 if (payload === 'A') {
                     return a.attack - b.attack; 
                 } else {
@@ -53,7 +56,7 @@ const Reducer = (state = initialState, { type, payload })=> {
 
             return {
                 ...state,
-                pokemons: orderedByAttack
+                filteredPokemons: orderedByAttack
             }
 
         case TYPE_FILTER:
@@ -78,7 +81,7 @@ const Reducer = (state = initialState, { type, payload })=> {
             })
             return {
                 ...state,
-                pokemons: filterByType
+                filteredPokemons: filterByType
             }
 
         case ORIGIN_FILTER:
@@ -88,14 +91,22 @@ const Reducer = (state = initialState, { type, payload })=> {
     
             return {
                 ...state,
-                pokemons: filterByOrigin,
+                filteredPokemons: filterByOrigin
             }
         
         case SEARCH_POKE:
             return {
                 ...state,
-                pokemons: [payload]
+                filteredPokemons: [payload]
             }
+
+        case DELETE_POKE:
+            const updatedPokemons = state.filteredPokemons.filter(poke => poke.id !== payload);
+            
+            return {
+                ...state,
+                filteredPokemons: updatedPokemons
+            };
 
         default:
             return {...state};

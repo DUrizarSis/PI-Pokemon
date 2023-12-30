@@ -5,7 +5,7 @@ import Pagination from '../Pagination/Pagination.jsx';
 import style from './Cards.module.css';
 
 function Cards() {
-    const allPokemons = useSelector(state => state.pokemons);
+    const allPokemons = useSelector(state => state.filteredPokemons);
 
     // Pagination settings
     const itemsPerPage = 12;

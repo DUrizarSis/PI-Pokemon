@@ -185,7 +185,7 @@
     color: white;
 }
 
-.closeBtn {
+.btnDelete {
     margin: 0;
     background-color: #c93e50;
     color: white;
@@ -194,6 +194,6 @@
     padding: 0 1em;
 }
 
-.closeBtn:hover {
-    background-color: #fc5d72;
+.btnDelete:hover {
+    background-color: #90202f;
 }
