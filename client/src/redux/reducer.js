@@ -2,7 +2,7 @@ import { GET_ALL, GET_TYPES, TYPE_FILTER, SEARCH_POKE, ADD_POKEMON, ORIGIN_FILTE
 
 const initialState = {
     types: [],
-    pokemons: [],
+    // pokemons: [],
     allPokemons: [],
     filteredPokemons: [],
 }
@@ -12,7 +12,7 @@ const Reducer = (state = initialState, { type, payload })=> {
         case GET_ALL:
             return {
                 ...state,
-                pokemons: payload,
+                // pokemons: payload,
                 allPokemons: payload,
                 filteredPokemons: payload,
             }
@@ -26,7 +26,7 @@ const Reducer = (state = initialState, { type, payload })=> {
         case ADD_POKEMON:
             return {
                 ...state,
-                pokemons: [...state.pokemons, payload],
+                // pokemons: [...state.pokemons, payload],
                 allPokemons: [...state.allPokemons, payload],
                 filteredPokemons: [...state.filteredPokemons, payload],
             }

@@ -8,7 +8,7 @@ import Cards from '../Cards/Cards.jsx';
 
 function Home() {
 
-    const allPokemons = useSelector(state => state.pokemons);
+    const allPokemons = useSelector(state => state.allPokemons);
     const types = useSelector(state => state.types);
 
     const dispatch = useDispatch();

@@ -76,13 +76,13 @@ function Form() {
             try {
                 const response = await axios.post('http://localhost:3001/pokemons', formData); 
                 dispatch(addPokemon(response.data));
-                navigate('/home'); // Redirige a home después de enviar los datos
+                navigate('/home'); // Redirect to home after sending data
                 alert('Pokemon created succesfully');
               } catch (error) {
                 alert(error.response.data.error);
             }
         } else {
-            alert('Formulario inválido');
+            alert('Invalid Form');
         }
     };
 

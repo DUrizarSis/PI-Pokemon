@@ -19,6 +19,7 @@ function Filters() {
     dispatch(filterByOrigin(origin));
   };
 
+  //Handle Orders
   const handleOrderFilter = (order) => {
     dispatch(orderCards(order))
   };
@@ -27,6 +28,7 @@ function Filters() {
     dispatch(filterByAttack(attack))
   }
 
+  //Reset
   const resetPokes = () => {
     dispatch(getAll())
   }

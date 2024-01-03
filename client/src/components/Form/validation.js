@@ -2,25 +2,25 @@ const validation = (formData) => {
 
   const errors = {};
 
-  // Validar campos obligatorios
+  // Validate required fields
   for (const key in formData) {
     if (!formData[key]) {
       errors[key] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
     }
   }
 
-  // Validar longitud mínima para 'name'
+  // Validate minimum length for 'name'
   if (formData.name.length < 3) {
     errors.name = 'Name should be at least 3 characters long';
   }
 
-  // Validar URL de imagen
+  // Validate image URL
   const urlPattern = /\.(gif|jpe?g|tiff?|png|webp|bmp)$/i;
   if (!urlPattern.test(formData.image)) {
       errors.image = 'Enter a valid image URL';
   } 
 
-  // Validar campos numéricos
+  // Validate numeric fields
   const numericFields = ['hp', 'attack', 'defense', 'speed', 'height', 'weight'];
   numericFields.forEach(field => {
     if (isNaN(formData[field]) || formData[field] <= 0) {
@@ -28,7 +28,7 @@ const validation = (formData) => {
     }
   });
 
-  // Validar que exactamente dos tipos estén seleccionados
+  // Validate that exactly two types are selected
   if (formData.types.length !== 2) {
     errors.types = 'Select exactly two types';
   }
